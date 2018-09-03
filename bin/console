@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "mac_app_sync"
+
+require "pry"
+Pry.start
