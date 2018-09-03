@@ -1,0 +1,25 @@
+keys:
+  - NSNavLastRootDirectory
+  - NSNavPanelExpandedSizeForOpenMode
+  - NSNavPanelExpandedSizeForSaveMode
+  - NSNavPanelExpandedStateForSaveMode
+  - PMSparkleWrapper Status
+  - RawCameraSupportVersion
+  - SUEnableAutomaticChecks
+  - SUFeedURL
+  - SUHasLaunchedBefore
+  - SULastCheckTime
+  - SULastProfileSubmissionDate
+  - SUScheduledCheckInterval
+  - SUSendProfileInfo
+  - SUUpdateRelaunchingMarker
+  - WebKitDefaultFontSize
+  - WebKitStandardFont
+
+patterns:
+  - ^Hockey
+  - ^MASPreferences
+  - ^NSSplitView Subview
+  - ^NSStatusItem Preferred Position
+  - ^NSWindow Frame
+  - ^BITApplication

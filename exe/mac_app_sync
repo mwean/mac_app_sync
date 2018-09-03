@@ -1,3 +1,17 @@
 #!/usr/bin/env ruby
 
+require "yaml"
 require "mac_app_sync"
+
+command = ARGV[0]
+config_path = File.expand_path(ENV.fetch("MAC_APP_SYNC_CONFIG"))
+config = YAML.load_file(config_path)
+
+case command
+when "backup"
+  MacAppSync::Backup.run(config)
+when "restore"
+  MacAppSync::Restore.run(config)
+else
+  puts "Unknown command #{command}"
+end
