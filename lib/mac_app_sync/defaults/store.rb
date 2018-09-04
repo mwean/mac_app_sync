@@ -3,10 +3,11 @@ require "pathname"
 module MacAppSync
   module Defaults
     class Store
-      attr_reader :domain
+      attr_reader :domain, :plist
 
       def initialize(domain)
         @domain = domain
+        @plist = load_plist
       end
 
       def values
@@ -15,10 +16,6 @@ module MacAppSync
 
       def to_binary
         plist.to_str(CFPropertyList::List::FORMAT_XML)
-      end
-
-      def plist
-        @plist ||= CFPropertyList::List.new(file: plist_path)
       end
 
       def set(key, value)
@@ -35,6 +32,12 @@ module MacAppSync
       end
 
       private
+
+      def load_plist
+        CFPropertyList::List.new(file: plist_path).tap do |list|
+          list.value = CFPropertyList::CFDictionary.new if plist_path.nil?
+        end
+      end
 
       def prefs_file_path
         prefs_file = Pathname.new("~/Library/Preferences/#{domain}.plist").expand_path

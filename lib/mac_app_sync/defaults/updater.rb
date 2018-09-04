@@ -7,7 +7,8 @@ module MacAppSync
         def update(domain, store)
           with_tempfile(store.to_binary) do |file|
             if system("plutil -lint #{file.path}")
-              system("defaults import #{store.plist_path} #{file.path}")
+              destination = store.plist_path || domain
+              system("defaults import '#{destination}' #{file.path}")
             else
               raise "Invalid plist for #{domain}"
             end
